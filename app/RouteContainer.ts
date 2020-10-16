@@ -7,7 +7,7 @@ export class RouteContainer {
   public wsServer: WSServer
   public startListen: (req: any) => any = (req) => {
     iohook.on('keypress', (event) => {
-      if (event.ctrlKey && event.keychar === 99) {
+      if (event.ctrlKey && (event.keychar === 99 || event.keychar === 1089)) {
         clipboardy.read().then((text) => {
           this.wsServer.broadcast(async () => {
             const response = new WSResponse(
